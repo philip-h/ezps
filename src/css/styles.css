@@ -1,0 +1,102 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --bg: #262626;
+  --text: #bebebe;
+  --headings: #bb86fc;
+  --box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+[data-theme="light"] {
+  --bg: #262626;
+  --text: #bebebe;
+  --headings: #bb86fc;
+}
+
+html, body, p {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: var(--bg);
+}
+
+body {
+  font-family: 'Merriweather', serif;
+  font-size: 2.1rem;
+  color: var(--text);
+  line-height: 1.5;
+  
+}
+
+nav {
+  background-color: var(--headings);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--bg);
+  box-shadow: var(--box-shadow);
+  
+}
+
+nav > div {
+  display: inline-block;
+}
+
+nav ul{
+  display: flex;
+  list-style-type: none;
+}
+
+nav li {
+  margin-right: 15px;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+a {
+  color: inherit
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+main {
+  max-width: 65ch;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+h1 {
+  font-size: 4.2rem;
+  color: var(--headings);
+}
+
+h2 {
+  font-size: 3.15rem;
+  color: var(--headings);
+}
+
+h3 {
+  font-size: 2.5rem;
+  color: var(--headings);
+}
+
+img {
+  width: 100%;
+}
+
+input[type="text"] {
+  outline: none;
+  border: 1px solid var(--text);
+  border-radius: 5px;
+  font-size: 2.1rem;
+  padding: 5px;
+  color: var(--text);
+  background-color: var(--bg);
+}
