@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>EZPs | Banana Bread</title>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/">
+        <ul>
+          <li><img src="/pics/logo.png" alt="logo"></li>
+          <li>EZPs</li>
+        </ul>
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <ul>
+        <!-- <li><a href="#">Tags</a></li> -->
+        <li><a onclick="switchTheme()">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 2A9.91 9.91 0 0 0 9 2.46A10 10 0 0 1 9 21.54A10 10 0 1 0 12 2Z" />
+          </svg>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+<h1>Banana Bread</h1>
+<p><img alt="banana-bread" src="/pics/banana-bread.webp" /></p>
+<h2>Ingredients</h2>
+<ul>
+<li>1 cup flour</li>
+<li>1/2 cup whole wheat flour</li>
+<li>1/2 cup oats</li>
+<li>1/2 cup brown sugar</li>
+<li>3 tsp. baking powder</li>
+<li>1/2 tsp. baking soda</li>
+<li>1/8 tsp. salt</li>
+<li>1/2 cup chocolate chips</li>
+<li>1 egg</li>
+<li>2/3-3/4 cup mmilk</li>
+<li>2 tbsp. vegetable oil</li>
+<li>1 1/2 cups mashed ripe bananas</li>
+</ul>
+<h2>Instructions</h2>
+<ol>
+<li>Combine flour, whole wheat flour, oats, sugar, baking powder, baking soda, and salt.</li>
+<li>Beat together egg, milk, oil, and banana</li>
+<li>Add egg micture to dry ingredients and beat for 30 secons (will be lumpy)</li>
+<li>Pour in a greased 9" loaf pan and bake in a preheated oven at 375&deg;F for 60 minutes or until tester comes out clean when inserted into the center.</li>
+</ol>  </main>
+  
+  <script>
+    let darkMode = localStorage.getItem('darkMode');
+    console.log(darkMode);
+    if (darkMode === 'enabled') {
+      document.documentElement.setAttribute("data-theme", "dark");
+      console.log('Init set to dark');
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      console.log('Init set to light');
+    }
+    
+
+    function switchTheme() {
+      darkMode = localStorage.getItem('darkMode');
+      console.log(darkMode);
+      if (darkMode !== 'enabled') {
+        console.log('Enabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem('darkMode', 'enabled');
+        
+      } else {
+        console.log('Disabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem('darkMode', null);
+      }
+    }
+
+    function filterRecipes() {
+      let $searchInput = document.getElementById('search');
+      let filter = $searchInput.value.toLowerCase();
+      let $lis = document.querySelectorAll('#recipe-list>li');
+      for (let li of $lis) {
+        let recipeName = li.getElementsByTagName('a')[0].innerText;
+        if (recipeName.toLowerCase().indexOf(filter) > -1) {
+          li.style.display = 'list-item';
+        } else {
+          li.style.display = 'none';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

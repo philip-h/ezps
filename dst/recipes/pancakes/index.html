@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>EZPs | Pancakes</title>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/">
+        <ul>
+          <li><img src="/pics/logo.png" alt="logo"></li>
+          <li>EZPs</li>
+        </ul>
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <ul>
+        <!-- <li><a href="#">Tags</a></li> -->
+        <li><a onclick="switchTheme()">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 2A9.91 9.91 0 0 0 9 2.46A10 10 0 0 1 9 21.54A10 10 0 1 0 12 2Z" />
+          </svg>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+<h1>Pancakes</h1>
+<p><img alt="pancakes" src="/pics/pancakes.webp" /></p>
+<h2>Ingredients</h2>
+<ul>
+<li>2 tbsp (28 g) butter </li>
+<li>2 tbsp sugar</li>
+<li>1 egg</li>
+<li>3 tsp vanilla</li>
+<li>1 1/2 cups of milk</li>
+<li>1 heaping tpsp baking powder</li>
+<li>1 1/2 cups flour </li>
+</ul>
+<h2>Instructions</h2>
+<ol>
+<li>Put butter in 4 cup measuring cup and microwave it until almost melted. Swish it around until fully melted.</li>
+<li>Add sugar and egg to melted butter. Mix well.</li>
+<li>Mix in vanilla and enough milk to get you to 2 cups of total liquid.</li>
+<li>Add baking powder and flour. Combine but do not over-mix. Add more flour if necessary.</li>
+<li>Let rest for at least 10 minutes before pouring about 1/4 cup of batter on a lightly greased pan.</li>
+<li>When bubbles cover top, flip over and cook until other side browns.</li>
+</ol>  </main>
+  
+  <script>
+    let darkMode = localStorage.getItem('darkMode');
+    console.log(darkMode);
+    if (darkMode === 'enabled') {
+      document.documentElement.setAttribute("data-theme", "dark");
+      console.log('Init set to dark');
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      console.log('Init set to light');
+    }
+    
+
+    function switchTheme() {
+      darkMode = localStorage.getItem('darkMode');
+      console.log(darkMode);
+      if (darkMode !== 'enabled') {
+        console.log('Enabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem('darkMode', 'enabled');
+        
+      } else {
+        console.log('Disabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem('darkMode', null);
+      }
+    }
+
+    function filterRecipes() {
+      let $searchInput = document.getElementById('search');
+      let filter = $searchInput.value.toLowerCase();
+      let $lis = document.querySelectorAll('#recipe-list>li');
+      for (let li of $lis) {
+        let recipeName = li.getElementsByTagName('a')[0].innerText;
+        if (recipeName.toLowerCase().indexOf(filter) > -1) {
+          li.style.display = 'list-item';
+        } else {
+          li.style.display = 'none';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

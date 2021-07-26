@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>EZPs</title>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/">
+        <ul>
+          <li><img src="/pics/logo.png" alt="logo"></li>
+          <li>EZPs</li>
+        </ul>
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <ul>
+        <!-- <li><a href="#">Tags</a></li> -->
+        <li><a onclick="switchTheme()">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 2A9.91 9.91 0 0 0 9 2.46A10 10 0 0 1 9 21.54A10 10 0 1 0 12 2Z" />
+          </svg>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+<h1>Recipes</h1>
+<input type="text" id="search" onkeyup="filterRecipes()" placeholder="Search" autocomplete="off">
+<ul id="recipe-list">
+<li><a href="/recipes/apple-pie">Apple Pie</a></li>
+<li><a href="/recipes/banana-bread">Banana Bread</a></li>
+<li><a href="/recipes/brownies">Brownies</a></li>
+<li><a href="/recipes/chicken-pot-pie">Chicken Pot Pie</a></li>
+<li><a href="/recipes/chocolate-chip-cookies">Chocolate Chip Cookies</a></li>
+<li><a href="/recipes/pancakes">Pancakes</a></li>
+<li><a href="/recipes/pie-crust">Pie Crust</a></li>
+</ul>
+  </main>
+  
+  <script>
+    let darkMode = localStorage.getItem('darkMode');
+    console.log(darkMode);
+    if (darkMode === 'enabled') {
+      document.documentElement.setAttribute("data-theme", "dark");
+      console.log('Init set to dark');
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      console.log('Init set to light');
+    }
+    
+
+    function switchTheme() {
+      darkMode = localStorage.getItem('darkMode');
+      console.log(darkMode);
+      if (darkMode !== 'enabled') {
+        console.log('Enabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem('darkMode', 'enabled');
+        
+      } else {
+        console.log('Disabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem('darkMode', null);
+      }
+    }
+
+    function filterRecipes() {
+      let $searchInput = document.getElementById('search');
+      let filter = $searchInput.value.toLowerCase();
+      let $lis = document.querySelectorAll('#recipe-list>li');
+      for (let li of $lis) {
+        let recipeName = li.getElementsByTagName('a')[0].innerText;
+        if (recipeName.toLowerCase().indexOf(filter) > -1) {
+          li.style.display = 'list-item';
+        } else {
+          li.style.display = 'none';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

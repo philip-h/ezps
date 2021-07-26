@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>EZPs | Chocolate Chip Cookies</title>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/">
+        <ul>
+          <li><img src="/pics/logo.png" alt="logo"></li>
+          <li>EZPs</li>
+        </ul>
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <ul>
+        <!-- <li><a href="#">Tags</a></li> -->
+        <li><a onclick="switchTheme()">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 2A9.91 9.91 0 0 0 9 2.46A10 10 0 0 1 9 21.54A10 10 0 1 0 12 2Z" />
+          </svg>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+<h1>Chocolate Chip Cookies</h1>
+<p><img alt="Chocolate Chip Cookies" src="/pics/cookies.webp" /></p>
+<h2>Ingredients</h2>
+<ul>
+<li>1 cup flour</li>
+<li>1/2 tsp. baking soda</li>
+<li>1/2 tsp. salt</li>
+<li>1/2 cup butter or margarine</li>
+<li>1/2 cup sugar</li>
+<li>1 egg</li>
+<li>1 stp. vanilla</li>
+<li>1 cup chocolate chips</li>
+</ul>
+<h2>Instructions</h2>
+<ol>
+<li>Combine flour, baking soda, and salt.</li>
+<li>Cream butter and add sugar until fluffy.</li>
+<li>Beat in egg and vanilla. Add flour mixture and stir until well blended.</li>
+<li>Stir in chocolate chips.</li>
+<li>Bake at 375&deg;F in a preheated oven for 10-15 minutes until lightly browned.</li>
+</ol>  </main>
+  
+  <script>
+    let darkMode = localStorage.getItem('darkMode');
+    console.log(darkMode);
+    if (darkMode === 'enabled') {
+      document.documentElement.setAttribute("data-theme", "dark");
+      console.log('Init set to dark');
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      console.log('Init set to light');
+    }
+    
+
+    function switchTheme() {
+      darkMode = localStorage.getItem('darkMode');
+      console.log(darkMode);
+      if (darkMode !== 'enabled') {
+        console.log('Enabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem('darkMode', 'enabled');
+        
+      } else {
+        console.log('Disabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem('darkMode', null);
+      }
+    }
+
+    function filterRecipes() {
+      let $searchInput = document.getElementById('search');
+      let filter = $searchInput.value.toLowerCase();
+      let $lis = document.querySelectorAll('#recipe-list>li');
+      for (let li of $lis) {
+        let recipeName = li.getElementsByTagName('a')[0].innerText;
+        if (recipeName.toLowerCase().indexOf(filter) > -1) {
+          li.style.display = 'list-item';
+        } else {
+          li.style.display = 'none';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

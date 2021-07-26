@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>EZPs | Chicken Pot Pie</title>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/">
+        <ul>
+          <li><img src="/pics/logo.png" alt="logo"></li>
+          <li>EZPs</li>
+        </ul>
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <ul>
+        <!-- <li><a href="#">Tags</a></li> -->
+        <li><a onclick="switchTheme()">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 2A9.91 9.91 0 0 0 9 2.46A10 10 0 0 1 9 21.54A10 10 0 1 0 12 2Z" />
+          </svg>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+<h1>Chicken Pot Pie</h1>
+<p><img alt="chicken-pot-pie" src="/pics/chicken-pot-pie.webp" /></p>
+<h2>Ingredients</h2>
+<h3>Pie Crust</h3>
+<ul>
+<li><a href="/recipes/pie-crust">Pie Crust Recipe</a></li>
+<li>1 egg (optional)</li>
+</ul>
+<h3>Filling</h3>
+<ul>
+<li>3 chicken breased seasoned, chopped.</li>
+<li>1/2 cup olive oil.</li>
+<li>5 tbsp (71g) butter</li>
+<li>2 cups onions</li>
+<li>3 cloves garlic</li>
+<li>3/4 cups (90g) flour</li>
+<li>1/4 tsp. salt</li>
+<li>4-5 cups chicken stock</li>
+<li>Frozen peas and carrots</li>
+</ul>
+<h2>Instructions</h2>
+<ol>
+<li><a href="/recipes/pie-crust">Make a pie crust</a></li>
+<li>In a large pot, heat olive oil and butter over medium high heat.</li>
+<li>Add onions and garlic and allow them to become translucent.</li>
+<li>Add chicken to base until cooked.</li>
+<li>Add flour to pot and stir for about 2 minutes.</li>
+<li>Add chicken stock, peas, and carrots. Cook until thick.</li>
+<li>Add filling to pie crust. Egg wash pie crust (optional).</li>
+<li>Bake at 425&deg;F for 30-35 minutes until crust is golden brown.</li>
+</ol>  </main>
+  
+  <script>
+    let darkMode = localStorage.getItem('darkMode');
+    console.log(darkMode);
+    if (darkMode === 'enabled') {
+      document.documentElement.setAttribute("data-theme", "dark");
+      console.log('Init set to dark');
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      console.log('Init set to light');
+    }
+    
+
+    function switchTheme() {
+      darkMode = localStorage.getItem('darkMode');
+      console.log(darkMode);
+      if (darkMode !== 'enabled') {
+        console.log('Enabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem('darkMode', 'enabled');
+        
+      } else {
+        console.log('Disabling Dark Mode');
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem('darkMode', null);
+      }
+    }
+
+    function filterRecipes() {
+      let $searchInput = document.getElementById('search');
+      let filter = $searchInput.value.toLowerCase();
+      let $lis = document.querySelectorAll('#recipe-list>li');
+      for (let li of $lis) {
+        let recipeName = li.getElementsByTagName('a')[0].innerText;
+        if (recipeName.toLowerCase().indexOf(filter) > -1) {
+          li.style.display = 'list-item';
+        } else {
+          li.style.display = 'none';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
