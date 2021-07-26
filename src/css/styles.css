@@ -8,9 +8,9 @@
 }
 
 [data-theme="light"] {
-  --bg: #262626;
-  --text: #bebebe;
-  --headings: #bb86fc;
+  --bg: #eee;
+  --text: #262626;
+  --headings: #3700B3;
 }
 
 html, body, p {

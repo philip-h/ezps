@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <title>EZPs | Banana Bread</title>
+  <title>EzPs | Banana Bread</title>
 </head>
 <body>
 
@@ -61,28 +61,22 @@
   
   <script>
     let darkMode = localStorage.getItem('darkMode');
-    console.log(darkMode);
-    if (darkMode === 'enabled') {
-      document.documentElement.setAttribute("data-theme", "dark");
-      console.log('Init set to dark');
-    } else {
+    // Dark theme by default
+    if (darkMode === 'disabled') {
       document.documentElement.setAttribute("data-theme", "light");
-      console.log('Init set to light');
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
     }
     
 
     function switchTheme() {
       darkMode = localStorage.getItem('darkMode');
-      console.log(darkMode);
-      if (darkMode !== 'enabled') {
-        console.log('Enabling Dark Mode');
+      if (darkMode === 'disabled') {
         document.documentElement.setAttribute("data-theme", "dark");
-        localStorage.setItem('darkMode', 'enabled');
-        
-      } else {
-        console.log('Disabling Dark Mode');
-        document.documentElement.setAttribute("data-theme", "light");
         localStorage.setItem('darkMode', null);
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem('darkMode', 'disabled');
       }
     }
 
