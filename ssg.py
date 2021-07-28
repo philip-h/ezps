@@ -117,6 +117,7 @@ if not os.path.exists(args.dst):
 copy_static_files(args.src, args.dst)
 
 # Step 2: Create the index.html
+## TODO: Generate title and description of index from src/index.md
 ## Write index content
 ### Title
 index_title = '<h1>Recipes</h1>'
