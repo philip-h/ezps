@@ -8,7 +8,7 @@
 - 1/2 cup butter or margarine
 - 1/2 cup sugar
 - 1 egg
-- 1 stp. vanilla
+- 1 tsp. vanilla
 - 1 cup chocolate chips
 
 ## Instructions

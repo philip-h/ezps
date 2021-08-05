@@ -8,7 +8,7 @@
 - 3 tsp vanilla
 - 1 1/2 cups of milk
 - 1 heaping tpsp baking powder
-- 1 1/2 cups flour 
+- 1 1/2 cups (180g) flour 
 
 ## Instructions
 1. Put butter in 4 cup measuring cup and microwave it until almost melted. Swish it around until fully melted.
